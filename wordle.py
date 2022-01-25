@@ -119,19 +119,14 @@ def filter_word_dict(scored_words, first_word, first_score):
     return new_dict
 
 
-valid_wordle = get_valid_wordle(english_words_lower_set)
-
-letter_dict = get_letter_dict(valid_wordle)
-
-position_table = create_position_table(valid_wordle)
-
-scoring_table = get_scoring_table(letter_dict, position_table)
-
-scored_words = get_scored_dict(scoring_table, valid_wordle)
-
-print_sorted_dict(scored_words)
-
 if __name__ == "__main__":
+    valid_wordle = get_valid_wordle(english_words_lower_set)
+    letter_dict = get_letter_dict(valid_wordle)
+    position_table = create_position_table(valid_wordle)
+    scoring_table = get_scoring_table(letter_dict, position_table)
+    scored_words = get_scored_dict(scoring_table, valid_wordle)
+    print_sorted_dict(scored_words)
+    
     for i in range(1, 7):
         word = input("enter you word: ")
         parsed_word = [i for i in word]
