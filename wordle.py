@@ -1,11 +1,17 @@
 from itertools import chain
 from collections import Counter, OrderedDict
+import nltk
 import numpy
 from pprint import pprint
+import wordle_words
 from english_words import english_words_lower_set
 
 
 # attempts to guess wordle word in most efficient way possible.
+
+scrabble_words = set(wordle_words.iterator())
+combined_english_words = english_words_lower_set and scrabble_words
+
 
 def normalize_counter(counter):
     """Normalizes a Counter by dividing values by sum of values"""
@@ -120,7 +126,7 @@ def filter_word_dict(scored_words, first_word, first_score):
 
 
 if __name__ == "__main__":
-    valid_wordle = get_valid_wordle(english_words_lower_set)
+    valid_wordle = get_valid_wordle(combined_english_words)
     letter_dict = get_letter_dict(valid_wordle)
     position_table = create_position_table(valid_wordle)
     scoring_table = get_scoring_table(letter_dict, position_table)
